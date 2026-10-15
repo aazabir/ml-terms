@@ -79,7 +79,7 @@
     box.appendChild(intro);
     box.appendChild(h('div', { class: 'i-row' }, [btnA, btnB]));
     box.appendChild(h('div', { class: 'i-slider' }, [
-      h('label', { for: 'eps' }, ['এজেন্টের নতুন পথ পরখ করার সম্ভাবনা']), slider, out
+      h('label', { for: 'eps' }, ['এজেন্টের নতুন পথ চেষ্টা করার সম্ভাবনা (এক্সপ্লোরেশন)']), slider, out
     ]));
     box.appendChild(h('div', { class: 'i-row' }, [auto, revealBtn, resetBtn]));
     box.appendChild(h('div', { class: 'svg-wrap' }, [svg]));

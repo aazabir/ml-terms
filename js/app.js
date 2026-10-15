@@ -251,6 +251,7 @@
     var body = h('div', { class: 'term-body' });
     var tableAt = typeof t.tableAfter === 'number' ? t.tableAfter : 1;
     var paraCount = 0;
+    var placed = false;
     function putTable() { if (t.table) body.appendChild(buildTable(t.table)); }
     if (t.table && tableAt === 0) putTable();
     (t.body || []).forEach(function (b) {
@@ -258,6 +259,7 @@
         body.appendChild(h('p', {}, [b]));
         paraCount++;
         if (t.table && paraCount === tableAt) putTable();
+        if (t.interactive && paraCount === t.interactiveAfter) { mountInteractive(body, t.interactive); placed = true; }
       } else if (b && b.h) {
         body.appendChild(h('h3', {}, [b.h]));
       }
@@ -265,7 +267,7 @@
     if (t.table && tableAt > paraCount) putTable();
     main.appendChild(body);
 
-    if (t.interactive) mountInteractive(main, t.interactive);
+    if (t.interactive && !placed) mountInteractive(main, t.interactive, main.querySelector('.term-nav'));
 
     var prev = flat[pos - 1], next = flat[pos + 1];
     main.appendChild(h('nav', { class: 'term-nav', 'aria-label': 'আগের ও পরের টার্ম' }, [
@@ -286,10 +288,10 @@
     return h('div', { class: 'scroll', role: 'region', tabindex: '0', 'aria-label': tb.caption || 'টেবিল' }, [table]);
   }
 
-  function mountInteractive(main, name) {
+  function mountInteractive(parent, name, before) {
     if (!/^[a-z0-9-]+$/.test(name)) return;
     var box = h('section', { class: 'interactive', 'aria-label': 'নিজে করে দেখুন' });
-    main.insertBefore(box, main.querySelector('.term-nav'));
+    if (before) parent.insertBefore(box, before); else parent.appendChild(box);
     var s = document.createElement('script');
     s.src = './js/interactives/' + name + '.js';
     s.onload = function () {
