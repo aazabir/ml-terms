@@ -1,0 +1,40 @@
+{
+  "book": {
+    "title": "মেশিন লার্নিং, সহজ ভাষায়",
+    "subtitle": "১৩৩টি টার্মের একটি ছোট গাইড, যাঁরা এই বিষয়ে একদম নতুন তাঁদের জন্য",
+    "intro": [
+      "মেশিন লার্নিংয়ের নাম আজকাল সবখানে শোনা যায়। কিন্তু বই খুললেই একগাদা অচেনা শব্দ এসে পড়ে, আর নতুন পাঠক প্রথম পাতাতেই হাঁপিয়ে ওঠেন। এই বই সেই হাঁপানি কমানোর চেষ্টা।",
+      "এখানে প্রতিটি টার্ম আলাদা পাতায় আছে। আপনি ধানের ফলন, আমের দাম, ঢাকার জ্যাম বা ক্রিকেটের মতো চেনা গল্প পড়তে পড়তেই শব্দগুলো বুঝে নেবেন। কঠিন সূত্র যতটা পারা যায় এড়ানো হয়েছে, আর যেখানে দিতে হয়েছে সেখানে আগে কথায় বুঝিয়ে নেওয়া হয়েছে।",
+      "পর্বগুলো ক্রম ধরে পড়লে সবচেয়ে ভালো, কারণ আগের টার্মের ওপর ভর করেই পরেরটা দাঁড়ায়। তবে কোনো নির্দিষ্ট শব্দ খুঁজতে চাইলে ওপরের সার্চ বক্স ব্যবহার করুন।"
+    ],
+    "noteTitle": "একটি কথা আগেই বলে রাখি",
+    "note": [
+      "বোঝা সহজ করার জন্য এই বইয়ের কিছু সংজ্ঞা ইচ্ছে করেই সরল রাখা হয়েছে। তাতে কোথাও কোথাও সূক্ষ্ম খুঁটিনাটি বাদ পড়েছে।",
+      "আনুষ্ঠানিক সংজ্ঞা দরকার হলে, অথবা কোনো গবেষণা ও পরীক্ষার কাজে ব্যবহার করতে চাইলে, অনুগ্রহ করে স্ট্যান্ডার্ড পাঠ্যবই দেখে নেবেন।"
+    ]
+  },
+  "chapters": [
+    {"id":"01","title":"ভিত্তি","en":"Foundations","total":13,"written":3,"quiz":false,
+     "terms":["Supervised Learning","Unsupervised Learning","Reinforcement Learning","Deep Learning","Dataset","Feature","Label/Target","Parameter","Hyperparameter","Bias (সাধারণ ধারণা)","Outlier","Inference","Baseline Model"]},
+    {"id":"02","title":"ডেটা প্রস্তুতি","en":null,"total":14,"written":0,"quiz":false,
+     "terms":["Imputation","Label Encoding","One-Hot Encoding","Binning/Discretization","Feature Engineering","Feature Extraction","Feature Scaling","Normalization","Standardization","Dimensionality Reduction","Data Augmentation","Class Imbalance","SMOTE","Data Leakage"]},
+    {"id":"03","title":"ডেটা ভাগ ও প্রশিক্ষণের ধারণা","en":null,"total":17,"written":0,"quiz":false,
+     "terms":["Training Set","Validation Set","Test Set","Cross-Validation","K-Fold Cross-Validation","Overfitting","Underfitting","Variance","Bias-Variance Tradeoff","Regularization","L1 Regularization (Lasso)","L2 Regularization (Ridge)","Elastic Net","Hyperparameter Tuning","Grid Search","Random Search","Pipeline"]},
+    {"id":"04","title":"শেখার প্রক্রিয়া","en":null,"total":9,"written":0,"quiz":false,
+     "terms":["Loss Function/Cost Function","Gradient Descent","Stochastic Gradient Descent (SGD)","Learning Rate","Epoch","Batch/Mini-Batch","Iteration","Early Stopping","Optimizer"]},
+    {"id":"05","title":"মডেল মূল্যায়ন","en":null,"total":19,"written":0,"quiz":false,
+     "terms":["Confusion Matrix","True Positive (TP)","True Negative (TN)","False Positive (FP) / Type I Error","False Negative (FN) / Type II Error","Accuracy","Precision","Recall/Sensitivity","F1-Score","Threshold","ROC Curve","AUC","Log Loss (Cross-Entropy Loss)","Mean Squared Error (MSE)","Root Mean Squared Error (RMSE)","Mean Absolute Error (MAE)","MAPE","R-Squared (R2)","Adjusted R-Squared"]},
+    {"id":"06","title":"ক্লাসিক্যাল অ্যালগরিদম","en":null,"total":9,"written":0,"quiz":false,
+     "terms":["Linear Regression","Logistic Regression","Decision Tree","K-Nearest Neighbors (KNN)","Naive Bayes","Support Vector Machine (SVM)","K-Means Clustering","Hierarchical Clustering","Principal Component Analysis (PCA)"]},
+    {"id":"07","title":"এনসেম্বল পদ্ধতি","en":null,"total":6,"written":0,"quiz":false,
+     "terms":["Ensemble Learning","Bagging","Random Forest","Boosting","Gradient Boosting","XGBoost"]},
+    {"id":"08","title":"নিউরাল নেটওয়ার্ক ও ডিপ লার্নিং","en":null,"total":19,"written":0,"quiz":false,
+     "terms":["Artificial Neural Network (ANN)","Perceptron","Weight","Bias (Neural Networks)","Activation Function","ReLU","Sigmoid","Softmax","Forward Propagation","Backpropagation","Dropout","Batch Normalization","Convolutional Neural Network (CNN)","Recurrent Neural Network (RNN)","Long Short-Term Memory (LSTM)","Transformer","Attention Mechanism","Transfer Learning","Fine-Tuning"]},
+    {"id":"09","title":"টাইম সিরিজ","en":null,"total":16,"written":0,"quiz":false,
+     "terms":["Time Series","Trend","Seasonality","Lag","Stationarity","Autocorrelation","White Noise","Differencing","ACF","PACF","Moving Average (MA)","Autoregressive (AR)","ARIMA/SARIMA","Exponential Smoothing","Rolling Window","Forecasting Horizon"]},
+    {"id":"10","title":"NLP ও কম্পিউটার ভিশন","en":null,"total":7,"written":0,"quiz":false,
+     "terms":["Natural Language Processing (NLP)","Computer Vision (CV)","Tokenization","Stemming/Lemmatization","Stop Words","Word Embedding (Word2Vec, GloVe)","TF-IDF"]},
+    {"id":"11","title":"ডিপ্লয়মেন্ট ও MLOps","en":null,"total":4,"written":0,"quiz":false,
+     "terms":["Serialization (Pickle/Joblib)","API","Model Drift/Concept Drift","Data Drift"]}
+  ]
+}
