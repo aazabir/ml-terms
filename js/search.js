@@ -16,7 +16,7 @@
         index = flat.map(function (x) {
           return {
             chapter: x.chapter, term: x.term,
-            bn: norm(x.term.bn), en: norm(x.term.en), simple: norm(x.term.simple)
+            bn: norm(x.term.bn), en: norm(x.term.en), simple: norm(x.term.simple + ' ' + (x.term.simpleEn || ''))
           };
         });
         return index;

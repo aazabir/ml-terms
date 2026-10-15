@@ -150,6 +150,8 @@ h2.section { font-size: 1.5rem; margin: 2rem 0 0.8rem; border-bottom: 3px solid 
   border-left: 8px solid var(--fg); padding: 0.4rem 0 0.4rem 1rem;
   font-weight: 600; margin: 0 0 1.5rem;
 }
+.definition p { margin: 0; }
+.definition .definition-en { margin-top: 0.5rem; font-weight: 400; font-size: 0.95rem; line-height: 1.7; color: var(--muted); }
 .term-body h3 { font-size: 1.25rem; margin: 1.6rem 0 0.5rem; }
 .scroll { overflow-x: auto; margin: 1.2rem 0 1.5rem; max-width: 100%; border: 1px solid var(--fg); }
 .scroll table { border-collapse: collapse; width: 100%; font-size: 0.95rem; line-height: 1.6; }

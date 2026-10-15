@@ -53,7 +53,7 @@
   }
 
   function termText(t) {
-    var parts = [t.simple || ''];
+    var parts = [t.simple || '', t.simpleEn || ''];
     (t.body || []).forEach(function (b) { parts.push(typeof b === 'string' ? b : (b && b.h) || ''); });
     if (t.table) {
       parts.push((t.table.headers || []).join(' '));
@@ -243,7 +243,10 @@
     main.appendChild(crumbs(ch, true));
     main.appendChild(h('p', { class: 'term-no' }, ['টার্ম ' + bn(cur.index + 1) + ' / ' + bn(ch.total)]));
     main.appendChild(h('h1', { class: 'term-title' }, [termTitle(t)]));
-    main.appendChild(h('p', { class: 'definition' }, [t.simple]));
+    main.appendChild(h('div', { class: 'definition' }, [
+      h('p', { lang: 'bn' }, [t.simple]),
+      t.simpleEn ? h('p', { class: 'definition-en', lang: 'en' }, [t.simpleEn]) : null
+    ]));
 
     var body = h('div', { class: 'term-body' });
     var tableAt = typeof t.tableAfter === 'number' ? t.tableAfter : 1;
