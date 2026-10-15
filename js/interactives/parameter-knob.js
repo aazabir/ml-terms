@@ -40,7 +40,7 @@
     var out = h('output', { for: 'pk' });
     var tbody = h('tbody');
     var table = h('table', {}, [
-      h('thead', {}, [h('tr', {}, ['কৃষক', 'জমি (বিঘা)', 'আসল ফলন', 'মডেলের আন্দাজ', 'ভুল (মণ)'].map(function (x) { return h('th', { scope: 'col' }, [x]); }))]),
+      h('thead', {}, [h('tr', {}, ['কৃষক ও জমি', 'আসল ফলন', 'আন্দাজ', 'ভুল'].map(function (x) { return h('th', { scope: 'col' }, [x]); }))]),
       tbody
     ]);
     var svgNS = 'http://www.w3.org/2000/svg';
@@ -50,11 +50,11 @@
     var status = h('div', { class: 'i-status', 'aria-live': 'polite' });
 
     box.appendChild(h('p', { class: 'i-title' }, ['প্যারামিটারের সংখ্যাটি নিজে খুঁজে দেখুন']));
-    box.appendChild(h('p', {}, ['মডেলের নিয়ম হলো ফলন সমান প্যারামিটার গুণ জমি। স্লাইডার সরিয়ে এমন একটি মান খুঁজুন, যাতে চার কৃষকের আসল ফলন আর আন্দাজ সবচেয়ে কাছাকাছি হয়।']));
+    box.appendChild(h('p', {}, ['মডেলের নিয়ম হলো ফলন সমান প্যারামিটার গুণ জমি। টেবিলের সব মান মণে। স্লাইডার সরিয়ে এমন একটি মান খুঁজুন, যাতে চার কৃষকের আসল ফলন আর আন্দাজ সবচেয়ে কাছাকাছি হয়।']));
     box.appendChild(h('div', { class: 'i-slider' }, [
       h('label', { for: 'pk' }, ['প্যারামিটার (প্রতি বিঘায় কত মণ ধরা হচ্ছে)']), slider, out
     ]));
-    box.appendChild(h('div', { class: 'scroll', role: 'region', tabindex: '0', 'aria-label': 'আসল ফলন ও আন্দাজের টেবিল' }, [table]));
+    box.appendChild(h('div', { class: 'scroll', role: 'region', tabindex: '0', 'aria-label': 'আসল ফলন ও আন্দাজের টেবিল, সব মান মণে' }, [table]));
     box.appendChild(h('div', { class: 'svg-wrap' }, [svg]));
     box.appendChild(status);
 
@@ -71,7 +71,7 @@
       out.textContent = f1(k);
       tbody.textContent = '';
       r.rows.forEach(function (x) {
-        tbody.appendChild(h('tr', {}, [x.name, bn(x.land), bn(x.actual), f1(x.guess), f1(x.err)].map(function (c) { return h('td', {}, [c]); })));
+        tbody.appendChild(h('tr', {}, [x.name + ' (' + bn(x.land) + ' বিঘা)', bn(x.actual), f1(x.guess), f1(x.err)].map(function (c) { return h('td', {}, [c]); })));
       });
       while (svg.firstChild) svg.removeChild(svg.firstChild);
       var w = 300, x0 = 100, maxErr = 35;

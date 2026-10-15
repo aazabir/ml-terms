@@ -188,6 +188,7 @@ h2.section { font-size: 1.5rem; margin: 2rem 0 0.8rem; border-bottom: 3px solid 
 .i-slider output { font-weight: 700; min-width: 3.5rem; text-align: right; }
 .interactive svg { display: block; width: 100%; height: auto; max-width: 100%; }
 .interactive svg text { fill: var(--fg); font-family: var(--font-body); }
+.interactive .scroll th, .interactive .scroll td { min-width: 0; padding: 0.4rem 0.5rem; }
 .svg-wrap { overflow-x: auto; max-width: 100%; }
 .i-status { border-top: 1px dashed var(--fg); padding-top: 0.5rem; margin-top: 0.6rem; font-size: 0.95rem; min-height: 3rem; }
 
