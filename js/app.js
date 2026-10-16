@@ -73,8 +73,40 @@
     bn: bn, h: h, store: store, getJSON: getJSON,
     loadBook: loadBook, loadChapter: loadChapter, loadAllTerms: loadAllTerms,
     wordCount: wordCount, minutes: minutes, chapterTitle: chapterTitle,
-    termTitle: termTitle, termUrl: termUrl
+    termTitle: termTitle, termUrl: termUrl, formatUpdated: formatUpdated
   };
+
+
+  /* সর্বশেষ আপডেটের তারিখ ও সময়, বাংলাদেশ সময়ে। উৎস data/updated.json */
+  var MONTHS = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+  function dayPart(h24) {
+    if (h24 >= 4 && h24 < 6) return 'ভোর';
+    if (h24 >= 6 && h24 < 12) return 'সকাল';
+    if (h24 >= 12 && h24 < 16) return 'দুপুর';
+    if (h24 >= 16 && h24 < 18) return 'বিকেল';
+    if (h24 >= 18 && h24 < 20) return 'সন্ধ্যা';
+    return 'রাত';
+  }
+  function formatUpdated(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return null;
+    var parts = {};
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Dhaka', hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'
+    }).formatToParts(d).forEach(function (p) { parts[p.type] = p.value; });
+    var h24 = parseInt(parts.hour, 10) % 24;
+    var h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+    var mm = ('0' + parts.minute).slice(-2);
+    return bn(parseInt(parts.day, 10)) + ' ' + MONTHS[parseInt(parts.month, 10) - 1] + ' ' + bn(parts.year) +
+      ', ' + dayPart(h24) + ' ' + bn(h12) + ':' + bn(mm) + ' (বাংলাদেশ সময়)';
+  }
+  function showUpdated(node) {
+    fetch('./data/updated.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        var t = j && formatUpdated(j.updated);
+        if (t) node.textContent = 'সর্বশেষ আপডেট ' + t;
+      }).catch(function () { /* না পেলে কিছু দেখাবে না */ });
+  }
 
   /* হেডার */
   function buildHeader() {
@@ -115,7 +147,13 @@
       ])
     ]));
     var f = document.getElementById('site-footer');
-    if (f) f.textContent = 'সহজ করার জন্য এখানে কিছু সংজ্ঞা ইচ্ছে করেই সরল রাখা হয়েছে। আনুষ্ঠানিক সংজ্ঞা বা গবেষণার কাজে স্ট্যান্ডার্ড পাঠ্যবই দেখুন।';
+    if (f) {
+      f.textContent = '';
+      f.appendChild(h('p', {}, ['সহজ করার জন্য এখানে কিছু সংজ্ঞা ইচ্ছে করেই সরল রাখা হয়েছে। আনুষ্ঠানিক সংজ্ঞা বা গবেষণার কাজে স্ট্যান্ডার্ড পাঠ্যবই দেখুন।']));
+      var stamp = h('p', { class: 'updated' });
+      f.appendChild(stamp);
+      showUpdated(stamp);
+    }
   }
 
   function showError(msg) {

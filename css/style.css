@@ -111,6 +111,8 @@ p { margin: 0 0 1.1em; }
 
 /* মূল কলাম */
 main { max-width: var(--col); margin: 0 auto; padding: 1.5rem 1rem 3rem; min-width: 0; }
+#site-footer p { margin: 0 0 0.4rem; }
+#site-footer .updated { font-weight: 600; margin-top: 0.6rem; }
 #site-footer {
   max-width: var(--col); margin: 0 auto; padding: 1rem 1rem 2.5rem;
   border-top: 1px solid var(--hair); color: var(--muted); font-size: 0.9rem;
