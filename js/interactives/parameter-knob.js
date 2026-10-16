@@ -49,10 +49,10 @@
     svg.setAttribute('role', 'img');
     var status = h('div', { class: 'i-status', 'aria-live': 'polite' });
 
-    box.appendChild(h('p', { class: 'i-title' }, ['প্যারামিটারের সংখ্যাটি নিজে খুঁজে দেখুন']));
-    box.appendChild(h('p', {}, ['মডেলের নিয়ম হলো ফলন সমান প্যারামিটার গুণ জমি। টেবিলের সব মান মণে। স্লাইডার সরিয়ে এমন একটি মান খুঁজুন, যাতে চার কৃষকের আসল ফলন আর আন্দাজ সবচেয়ে কাছাকাছি হয়।']));
+    box.appendChild(h('p', { class: 'i-title' }, ['প্যারামিটারের সংখ্যাটা নিজে খুঁজে দেখুন']));
+    box.appendChild(h('p', {}, ['মডেল ফলন বের করে প্যারামিটারকে জমির বিঘা দিয়ে গুণ করে। স্লাইডার সরিয়ে দেখুন, কোন মানে চার কৃষকের আসল ফলন আর আন্দাজ সবচেয়ে কাছাকাছি আসে। টেবিলের সব মান মণে।']));
     box.appendChild(h('div', { class: 'i-slider' }, [
-      h('label', { for: 'pk' }, ['প্যারামিটার (প্রতি বিঘায় কত মণ ধরা হচ্ছে)']), slider, out
+      h('label', { for: 'pk' }, ['প্যারামিটার (প্রতি বিঘায় কত মণ ধরছেন)']), slider, out
     ]));
     box.appendChild(h('div', { class: 'scroll', role: 'region', tabindex: '0', 'aria-label': 'আসল ফলন ও আন্দাজের টেবিল, সব মান মণে' }, [table]));
     box.appendChild(h('div', { class: 'svg-wrap' }, [svg]));
@@ -83,7 +83,7 @@
       svg.setAttribute('aria-label', 'গড় ভুল ' + f1(r.mae) + ' মণ');
       var atBest = Math.abs(k - best.k) < 1e-9;
       status.textContent = atBest
-        ? 'এই মানে গড় ভুল সবচেয়ে কম। ট্রেনিংয়ে কম্পিউটারও এভাবেই এমন একটি মান খোঁজে, তবে স্লাইডার সরিয়ে নয়, হিসাব কষে।'
+        ? 'এই মানে গড় ভুল সবচেয়ে কম। ট্রেনিংয়ে কম্পিউটারও এভাবে মান খোঁজে, তবে স্লাইডার নেড়ে নয়, হিসাব কষে।'
         : (r.mae > best.mae ? 'গড় ভুল ' + f1(r.mae) + ' মণ। আরও কমানো যায় কি না দেখুন।' : '');
     }
     slider.addEventListener('input', update);
